@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "300216120971",
+    "project_id": "car-parking-finder-18178",
+    "storage_bucket": "car-parking-finder-18178.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300216120971:android:20421c99e4baaad35a868e",
+        "android_client_info": {
+          "package_name": "co.parking_finder.example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300216120971-l393bhsvutt0abh9jfgmgnrs4bdbbsr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3zW-mHsxzDatgTSO218kWg65YCsuECfk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300216120971-l393bhsvutt0abh9jfgmgnrs4bdbbsr4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

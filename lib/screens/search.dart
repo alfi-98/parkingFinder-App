@@ -1,34 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:provider/provider.dart';
-import 'package:geolocator/geolocator.dart';
 
-class Search extends StatelessWidget {
+class SearchParking extends StatefulWidget {
+  const SearchParking({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    final currentPosition = Provider.of<Position?>(context);
+  _SearchParkingState createState() => _SearchParkingState();
+}
 
-    //final placesProvider = Provider.of<Future<List<Place>>>(context);
-    return Scaffold(
-      body: (currentPosition != null)
-          ? Column(
-              children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 3,
-                  width: MediaQuery.of(context).size.width,
-                  child: GoogleMap(
-                    initialCameraPosition: CameraPosition(
-                        target: LatLng(currentPosition.latitude,
-                            currentPosition.longitude),
-                        zoom: 16.0),
-                    zoomGesturesEnabled: true,
-                  ),
-                ),
-              ],
-            )
-          : Center(
-              child: CircularProgressIndicator(),
-            ),
+class _SearchParkingState extends State<SearchParking> {
+  late GoogleMapController mapController;
+
+  Set<Marker> _markers = {};
+
+  build(context) {
+    return Stack(
+      children: [
+        GoogleMap(
+          initialCameraPosition:
+              CameraPosition(target: LatLng(23.7409387, 90.3751147), zoom: 16),
+          onMapCreated: _onMapCreated,
+          markers: _markers,
+          mapType: MapType.normal,
+          myLocationEnabled: true,
+        ),
+      ],
     );
+  }
+
+  _onMapCreated(GoogleMapController controller) {
+    setState(() {
+      mapController = controller;
+      _markers.add(Marker(
+          markerId: MarkerId('id-1'),
+          position: LatLng(23.7409387, 90.3751147),
+          infoWindow: InfoWindow(
+            title: 'Parking Slot-1',
+            snippet: 'Rate : 250/hr',
+          )));
+    });
   }
 }
