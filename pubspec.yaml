@@ -45,6 +45,7 @@ dependencies:
   firebase_auth: ^3.3.0
   get: ^4.6.1
   snack: ^2.0.0
+  google_fonts: ^2.1.0
   
 dev_dependencies:
   flutter_test:
