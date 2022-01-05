@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:parking_finder/MVC%20Structure/Controller/book_spot.dart';
 
 class ParkingCard extends StatefulWidget {
   const ParkingCard({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class _ParkingCardState extends State<ParkingCard> {
         iconTheme: IconThemeData(
           color: Colors.white,
         ),
-        title: Text("map"),
+        title: Text("Parking Spaces"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -67,14 +68,14 @@ class _ParkingCardState extends State<ParkingCard> {
                           children: [
                             ListTile(
                               title: Text(
-                                "\$$duration",
+                                "\$$bill/$duration${"hr"}",
                                 style: TextStyle(
                                     fontSize: 30,
                                     fontFamily: 'sans-serif',
                                     fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text(
-                                "Time : $address",
+                                "Location : $address",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'sans-serif',
@@ -114,15 +115,12 @@ class _ParkingCardState extends State<ParkingCard> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       onPressed: () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (_) =>
-                                        //           ProductDetails(_spots[index])),
-                                        // );
-
-                                        // Navigator.pushNamed(
-                                        //     context, AuctionPage.id);
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) =>
+                                                  BookSpot(_spots[index])),
+                                        );
                                       },
                                     )
                                   ],
@@ -149,6 +147,7 @@ class _ParkingCardState extends State<ParkingCard> {
           "duration": qn.docs[i]["duration"],
           "lat": qn.docs[i]["latitude"],
           "long": qn.docs[i]["longitude"],
+          "ownerName": qn.docs[i]["ownerName"],
           "productID": qn.docs[i].id
           // "userName": qn.docs[i]["userName"],
         });

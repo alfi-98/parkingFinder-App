@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:parking_finder/screens/parking_address.dart';
-import 'package:parking_finder/screens/upload_parkingspot.dart';
+
+import '../Controller/upload_parkingspot.dart';
+import '../View/parking_address.dart';
 
 class UserDashBoard extends StatelessWidget {
   Items item1 = new Items(
@@ -44,7 +45,7 @@ class UserDashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Items> myList = [item1, item2, item3, item4, item5, item6];
-    var color = 0xff406882;
+    var color = 0xFF577BC1;
     return Flexible(
       child: GridView.count(
           childAspectRatio: 1.0,

@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:parking_finder/screens/welcome_page.dart';
+import 'package:parking_finder/MVC Structure/View/welcome_page.dart';
+
+import 'MVC Structure/View/welcome_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

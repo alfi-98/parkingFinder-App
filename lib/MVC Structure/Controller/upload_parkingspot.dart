@@ -5,7 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/snackbar/snackbar.dart';
-import 'package:parking_finder/screens/home_page.dart';
+
+import '../View/home_page.dart';
 
 class CreateSpot extends StatefulWidget {
   static String id = 'create_item';
@@ -26,6 +27,7 @@ class _CreateSpotState extends State<CreateSpot> {
   late String coordinates_lat;
   late String coordinates_lang;
   late String duration;
+  late String ownerName;
   bool isCompleted = false;
 
   void getCurrentUser() async {
@@ -48,6 +50,7 @@ class _CreateSpotState extends State<CreateSpot> {
         'longitude': coordinates_lang,
         'bill': bill,
         'duration': duration,
+        'ownerName': loggedInUser.displayName
       });
     } catch (e) {
       print(e);
@@ -89,14 +92,14 @@ class _CreateSpotState extends State<CreateSpot> {
           }
         },
         onStepCancel: () => setState(() => currentStep -= 1),
-        controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+        controlsBuilder: (context, ControlsDetails controls) {
           return Container(
             margin: EdgeInsets.only(top: 50),
             child: Row(children: [
               Expanded(
                 child: ElevatedButton(
                   child: Text('Continue'),
-                  onPressed: onStepContinue,
+                  onPressed: controls.onStepContinue,
                 ),
               ),
               const SizedBox(width: 12),
@@ -104,7 +107,7 @@ class _CreateSpotState extends State<CreateSpot> {
                 Expanded(
                   child: ElevatedButton(
                     child: Text('Back'),
-                    onPressed: onStepCancel,
+                    onPressed: controls.onStepCancel,
                   ),
                 ),
             ]),

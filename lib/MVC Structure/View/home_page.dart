@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:parking_finder/screens/search.dart';
-import 'package:parking_finder/screens/user_options.dart';
+
+import '../Controller/search.dart';
+import '../Model/user_options.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,6 +14,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _firestore = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
+
+  late User loggedInUser;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = _auth.currentUser!;
+      loggedInUser = user;
+
+      //final userName = loggedInUser.displayName!;
+      // userEmail = loggedInUser.email!;
+
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "User Name",
+                      loggedInUser.displayName!,
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                               color: Colors.black,
@@ -42,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                       height: 4,
                     ),
                     Text(
-                      "Home",
+                      loggedInUser.email!,
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                               color: Color(0xffa29aac),

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/snackbar/snackbar.dart';
-import 'package:parking_finder/screens/home_page.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+
+import 'home_page.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
