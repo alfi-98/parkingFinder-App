@@ -13,7 +13,7 @@ class SearchParking extends StatefulWidget {
 class _SearchParkingState extends State<SearchParking> {
   late GoogleMapController mapController;
 
-  Set<Marker> _markers = {};
+  final Set<Marker> _markers = {};
   final List _spots = [];
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;

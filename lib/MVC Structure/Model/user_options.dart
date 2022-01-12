@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parking_finder/MVC%20Structure/View/parking_bills.dart';
 
 import '../Controller/upload_parkingspot.dart';
 import '../View/parking_address.dart';
@@ -63,6 +64,10 @@ class UserDashBoard extends StatelessWidget {
                 if (data.title == 'Parking Owner') {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => CreateSpot()));
+                }
+                if (data.title == 'Billing') {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ParkingBills()));
                 }
               },
               child: Container(

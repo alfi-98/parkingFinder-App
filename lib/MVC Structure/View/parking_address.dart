@@ -148,7 +148,8 @@ class _ParkingCardState extends State<ParkingCard> {
           "lat": qn.docs[i]["latitude"],
           "long": qn.docs[i]["longitude"],
           "ownerName": qn.docs[i]["ownerName"],
-          "productID": qn.docs[i].id
+          "productID": qn.docs[i].id,
+
           // "userName": qn.docs[i]["userName"],
         });
       }

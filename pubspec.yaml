@@ -46,10 +46,13 @@ dependencies:
   get: ^4.6.1
   snack: ^2.0.0
   google_fonts: ^2.1.0
+  dio: ^4.0.4
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: 
+  test: any
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
